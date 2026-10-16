@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f2ed;
+  --surface: #ffffff;
+  --surface-tint: #f0f4f7;
+  --border: #e5e7eb;
+  --border-strong: #d4dae0;
+
+  --ink: #14181f;
+  --navy: #242c31;
+  --navy-alt: #353d43;
+  --fg: #14181f;
+  --fg-muted: #525f6b;
+  --fg-faint: #9ca3af;
+
+  --primary: #f50031;
+  --primary-dark: #c2002a;
+  --primary-soft: #ffe3e8;
+  --on-primary: #ffffff;
+
+  --tone-cream: #fff5e8;
+  --tone-mint: #e8f5f2;
+  --tone-taupe: #e5e2dd;
+
+  --success: #1a7f4b;
+  --danger: #f50031;
+  --warning: #b8860b;
+
+  --on-dark: #f5f2ed;
+  --on-dark-muted: #9ca3af;
+
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-newsreader);
+  --font-mono: var(--font-geist-mono);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-newsreader);
+  --font-mono: var(--font-geist-mono);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Status pills used inside mock UI */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+.pill-neutral {
+  background: var(--surface-tint);
+  color: var(--fg-muted);
+}
+.pill-primary {
+  background: var(--primary-soft);
+  color: var(--primary-dark);
+}
+
+/* Quote mark used in testimonials */
+.quote-mark {
+  font-family: var(--font-display);
+  font-style: italic;
+  line-height: 1;
+  color: var(--primary);
+  opacity: 0.4;
+}
